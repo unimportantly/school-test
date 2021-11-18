@@ -22,6 +22,7 @@ public class CoursesServlet extends HttpServlet {
 	CoursesService coursesService = CoursesService.getInstance();
 	
     public CoursesServlet() {
+    	//populates the empty list created above by grabbing the singleton-created list of courses
     	this.courses = coursesService.getCourses();
     }
 
@@ -29,6 +30,8 @@ public class CoursesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//send the courses list to the jsp, and forwards to it
 		request.setAttribute("courses", courses);
 		
 		request.getRequestDispatcher("/WEB-INF/courses.jsp").forward(request, response);

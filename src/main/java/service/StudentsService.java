@@ -13,12 +13,17 @@ public class StudentsService {
 	    private List<Student> students = new ArrayList<Student>();
 	    private CoursesService coursesService = CoursesService.getInstance();
     	
+	    /**
+	     * singleton constructor
+	     */
 	    private StudentsService() {
+	    	//creating 20 students
 	    	for (int i = 0; i < 20; i++) {
 	    		String lastName = "Last-Name" + i; 
 	    		String firstName = "First-Name" + i;
 	    		int age = 20 + i;
 	    		int grade = 0 + i;
+	    		//adding them to a different course
 	    		Course formation;
 	    		if ( i % 2 == 0) {
 	    			formation = coursesService.getCourses().get(0);
@@ -30,6 +35,10 @@ public class StudentsService {
 	    	}
 	    }
 
+	    /**
+	     * singleton calling method
+	     * @return 
+	     */
 	    public static StudentsService getInstance() {
 	        if (instances == null) {
 	            instances = new StudentsService();
@@ -38,10 +47,19 @@ public class StudentsService {
 	        return instances;
 	    }
 
+	    /**
+	     * method to return a list of students created by the singleton
+	     * @return a list of student objects
+	     */
 	    public List<Student> getStudents() {
 	        return this.students;
 	    }
 
+	    /**
+	     * method to find a single student object from their name
+	     * @param lastName of the student to find
+	     * @return student object
+	     */
 	    public Student getStudentByName(String lastName) {
 	        Student response = null;
 	        for (Student student : students) {

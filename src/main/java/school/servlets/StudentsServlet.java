@@ -23,8 +23,9 @@ public class StudentsServlet extends HttpServlet {
 	private List<Student> students = new ArrayList<Student>();
 	private StudentsService studentService = StudentsService.getInstance();
 	
-	
-
+	/**
+	 * populates the List of students by calling on the student singleton
+	 */
     public StudentsServlet() {
     	this.students = studentService.getStudents();
     }
@@ -33,7 +34,7 @@ public class StudentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		//sends the list to the jsp, forwards to it
 		request.setAttribute("students", students);
 	
 		request.getRequestDispatcher("/WEB-INF/students.jsp").forward(request, response);

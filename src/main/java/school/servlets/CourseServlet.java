@@ -30,8 +30,11 @@ public class CourseServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//logs the course object requested through the parameter name inside the empty course created above
 		this.course = coursesService.getCourseByName(request.getParameter("name"));
+		//send the object to the jsp to be displayed there
 		request.setAttribute("course", course);
+		//forward to the jsp
 		request.getRequestDispatcher("/WEB-INF/course.jsp").forward(request, response);
 	}
 

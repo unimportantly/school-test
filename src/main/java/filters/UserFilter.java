@@ -15,17 +15,21 @@ import jakarta.servlet.http.HttpSession;
 @WebFilter(filterName = "userFilter", urlPatterns = {"/home" , "/courses", "/course", "/students", "/student"})
 public class UserFilter implements Filter{
 
+	/**
+	 * filter to send unauthenticated users to the login page
+	 */
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		
+		//cast request to be able to use a dispatcher later
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
-
+		//open a session to track the user
 		HttpSession session = req.getSession();
 		if (session.getAttribute("username") == null) {
+			//sends the unauthenticated user back to the login
 			req.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 		} else {
+			//lets the user through 
 			chain.doFilter(request, response);
 		}
 	}

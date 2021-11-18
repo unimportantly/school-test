@@ -20,18 +20,19 @@ public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentsService studentsService = StudentsService.getInstance();
 	private Student student;
-    /**
-     * Default constructor. 
-     */
+  
     public StudentServlet() {
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// put the student object requested through the param lastName into the student object
 		student = this.studentsService.getStudentByName(request.getParameter("lastName"));
+		
+		//sends the object to the jsp, then forwards to it
 		request.setAttribute("student", student);
 		request.getRequestDispatcher("/WEB-INF/student.jsp").forward(request, response);
 	}

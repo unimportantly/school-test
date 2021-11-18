@@ -25,11 +25,11 @@ public class HomeServlet extends HttpServlet implements Servlet {
      * @see HttpServlet#HttpServlet()
      */
     public HomeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//forwards to the appropriate jsp page
 		request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
 	}
 
