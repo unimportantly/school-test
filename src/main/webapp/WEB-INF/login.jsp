@@ -9,10 +9,12 @@
 <body>
 <h1><b>Login page</b></h1>
 
-<form>
+<form name="login" method="GET" action="/school/home">
   <label for="UID">User ID:</label><br>
   <input type="text" id="UID" name="UID"><br>
   <label for="password">Password:</label><br>
   <input type="text" id="pw" name="pw">
+  <input type="submit" value="log in">
+  </form>
 </body>
 </html>
