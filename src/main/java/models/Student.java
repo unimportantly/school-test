@@ -9,7 +9,7 @@ public class Student {
 	private String lastName;
 	private String firstName;
 	private int age;
-	private List<Integer> grades;
+	private int grade;
 	private Course course;
 	
 	/**
@@ -19,13 +19,13 @@ public class Student {
 	 * @param age
 	 * @param course
 	 */
-	public Student(String lastName, String firstName, int age, Course course) {
+	public Student(String lastName, String firstName, int age, Course course, int grade) {
 		super();
 		this.setLastName(lastName);
 		this.setFirstName(firstName);
 		this.setAge(age);
 		this.setCourse(course);
-		this.grades = new ArrayList<Integer>();
+		this.setGrade(grade);
 	}
 
 	//getters & setters
@@ -59,15 +59,13 @@ public class Student {
 	}
 
 
-	public List<Integer> getGrades() {
-		return grades;
+	public int getGrade() {
+		return grade;
 	}
 
-
-	public void setGrades(List<Integer> grades) {
-		this.grades = grades;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
-
 
 	public Course getCourse() {
 		return course;
@@ -78,12 +76,13 @@ public class Student {
 		this.course = course;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Student [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", grades=" + grades
+		return "Student [lastName=" + lastName + ", firstName=" + firstName + ", age=" + age + ", grade=" + grade
 				+ ", course=" + course + "]";
 	}
+
+
 	
 	
 }

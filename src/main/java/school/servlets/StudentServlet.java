@@ -1,32 +1,39 @@
 package school.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpSession;
+import models.Student;
+import service.StudentsService;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Student
  */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/student")
+public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private StudentsService studentsService = StudentsService.getInstance();
+	private Student student;
     /**
      * Default constructor. 
      */
-    public Login() {
+    public StudentServlet() {
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		student = this.studentsService.getStudentByName(request.getParameter("lastName"));
+		request.setAttribute("student", student);
+		request.getRequestDispatcher("/WEB-INF/student.jsp").forward(request, response);
 	}
 
 	/**

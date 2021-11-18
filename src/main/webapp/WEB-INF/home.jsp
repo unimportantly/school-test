@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Home page</h1>
 
-</form>
+<h3><a href="/school/courses">Our courses</a></h3>
+
+<h3><a href="/school/students">Our students</a></h3>
 </body>
 </html>

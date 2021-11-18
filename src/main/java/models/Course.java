@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
 
 	
@@ -17,6 +20,7 @@ public class Course {
 		this.setName(name);
 		this.setProgram(program);
 		this.setNbOfStudents(nbOfStudents);
+	
 	}
 
 	//getters & setters
@@ -48,6 +52,8 @@ public class Course {
 	public String toString() {
 		return "Course [name=" + name + ", program=" + program + ", nbOfStudents=" + nbOfStudents + "]";
 	}
-	
+
+
+
 	
 }
